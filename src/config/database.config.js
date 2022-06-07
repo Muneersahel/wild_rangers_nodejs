@@ -3,7 +3,7 @@ const { config } = require('./variables.config');
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: '../../db.sqlite',
+    storage: 'db.sqlite',
     pool: {
         max: 5,
         min: 0,
