@@ -105,3 +105,6 @@ dist
 
 # Assets folder
 assets/
+
+# sqlite db
+*.sqlite
