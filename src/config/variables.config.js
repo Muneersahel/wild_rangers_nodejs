@@ -1,0 +1,37 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+const DB_NAME = process.env.DB_NAME;
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASS;
+
+const HOST = process.env.DB_HOST;
+
+const PORT = process.env.PORT;
+
+const TIMEZONE = process.env.TIMEZONE;
+
+const SECRET_KEY = process.env.SECRET_KEY;
+
+const BCRYPT_SALT = process.env.BCRYPT_SALT;
+
+const NODE_ENV = process.env.NODE_ENV || 'production';
+
+exports.config = {
+    db: {
+        name: DB_NAME,
+        user: DB_USER,
+        pass: DB_PASS,
+        host: HOST,
+    },
+    server: {
+        port: PORT,
+        host: HOST,
+    },
+    secretKey: SECRET_KEY,
+    timezone: TIMEZONE,
+    bcrypt: {
+        salt: BCRYPT_SALT,
+    },
+    nodeEnv: NODE_ENV,
+};

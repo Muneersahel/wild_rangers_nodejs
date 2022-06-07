@@ -1,4 +1,6 @@
 {
+    "javascript.validate.enable": true,
+    "javascript.suggestionActions.enabled": false,
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#65adaf",
         "activityBar.activeBorder": "#f4eaf4",
