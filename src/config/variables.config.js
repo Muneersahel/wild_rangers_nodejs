@@ -9,8 +9,6 @@ const HOST = process.env.DB_HOST;
 
 const PORT = process.env.PORT;
 
-const TIMEZONE = process.env.TIMEZONE;
-
 const SECRET_KEY = process.env.SECRET_KEY;
 
 const BCRYPT_SALT = process.env.BCRYPT_SALT;
@@ -33,7 +31,6 @@ exports.config = {
         host: HOST,
     },
     secretKey: SECRET_KEY,
-    timezone: TIMEZONE,
     bcrypt: {
         salt: BCRYPT_SALT,
     },

@@ -10,6 +10,7 @@ const { config } = require('./src/config/variables.config');
 const db = require('./src/models/index.model');
 
 const authRoutes = require('./src/routes/auth.routes');
+const userRoutes = require('./src/routes/user.routes');
 
 const isProduction = config.nodeEnv === 'production';
 
@@ -47,6 +48,7 @@ app.use((req, res, next) => {
 });
 
 app.use(authRoutes);
+app.use(userRoutes);
 
 app.all('*', (req, res, next) => {
     res.json({
