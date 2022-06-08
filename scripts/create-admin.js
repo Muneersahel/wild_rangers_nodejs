@@ -1,4 +1,5 @@
 const prompt = require('prompt');
+const { generateHash } = require('../src/helpers/functions.helper');
 const { user: User } = require('../src/models/index.model');
 
 const schema = {
@@ -45,7 +46,7 @@ prompt.get(schema, async (_err, result) => {
             const newUser = await User.create({
                 name: result.name,
                 email: result.email,
-                password: result.password,
+                password: await generateHash(result.password),
                 isAdmin: true,
             });
             console.log(
