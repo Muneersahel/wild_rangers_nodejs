@@ -5,7 +5,7 @@ const userController = require('../controllers/user.controller');
 
 const router = express.Router();
 
-router.get('/dashboard', userController.getHome);
+router.get('/dashboard', userController.getDashboard);
 router.get('/ranger', userController.getRanger);
 router.get('/users', userController.getUsers);
 
