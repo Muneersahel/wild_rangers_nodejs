@@ -5,7 +5,7 @@ exports.getDashboard = (req, res, next) => {
 };
 
 exports.getRanger = (req, res, next) => {
-    res.render("ranger-detals");
+    res.render("ranger-details");
 };
 
 exports.getUsers = (req, res) => {
