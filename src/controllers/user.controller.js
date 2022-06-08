@@ -8,6 +8,10 @@ exports.getRanger = (req, res, next) => {
     res.render("ranger-details");
 };
 
+exports.getRangers = (req, res, next) => {
+    res.render("rangers-list");
+};
+
 exports.getUsers = (req, res) => {
     User.findAll()
         .then((users) => {
