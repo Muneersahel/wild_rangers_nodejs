@@ -19,9 +19,9 @@ const port = config.server.port;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', 'src/views');
 app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.use(express.static(path.join(__dirname, 'src/public')));
 
 const SequelizeStore = sequelizeConnectSession(session.Store);
 app.use(

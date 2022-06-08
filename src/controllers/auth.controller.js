@@ -4,6 +4,9 @@ const { comparePassword } = require('../helpers/functions.helper');
 const { config } = require('../config/variables.config');
 
 // get login page
+exports.getLogin = (req, res, next) => {
+    res.render("login");
+};
 
 exports.loginAdmin = async (req, res) => {
     const { email, password } = req.body;
@@ -19,11 +22,15 @@ exports.loginAdmin = async (req, res) => {
         });
 
         if (!user) {
-            // render login page with errors (Email or password is incorrect)
+            // redirect login page with errors (Email or password is incorrect)
+            const message = "Email or password is incorrect";
+            res.render("login", { message: message });
         }
         const isPasswordValid = await comparePassword(password, user.password);
         if (!isPasswordValid) {
             // render login page with errors (Email or password is incorrect)
+            const message = "Email or password is incorrect";
+            res.render("login", { message: message });
         }
 
         req.session.isAuthenticated = true;
@@ -36,6 +43,7 @@ exports.loginAdmin = async (req, res) => {
         console.log(req.session);
 
         // redirect to dashboard
+        res.redirect("/dashboard");
     } catch (error) {
         console.log(error);
     }
@@ -47,5 +55,7 @@ exports.logoutAdmin = async (req, res) => {
             console.log(err);
         }
         // redirect to login page
+        const message = "Logout Successfully!";
+        res.render("login", { message: message });
     });
 };
