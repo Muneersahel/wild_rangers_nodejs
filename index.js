@@ -10,7 +10,7 @@ const { config } = require('./src/config/variables.config');
 const db = require('./src/models/index.model');
 
 const authRoutes = require('./src/routes/auth.routes');
-const userRoutes = require('./src/routes/user.routes');
+const rangerRoutes = require('./src/routes/ranger.routes');
 
 const isProduction = config.nodeEnv === 'production';
 
@@ -31,7 +31,7 @@ app.use(
             db: db.sequelize,
             expiration: 1000 * 60 * 60 * 24, // 1 day
         }),
-        cookie: { maxAge: 60000 },
+        cookie: { maxAge: 1000 * 60 * 60 * 24 },
         resave: false,
         saveUninitialized: false,
     })
@@ -48,12 +48,10 @@ app.use((req, res, next) => {
 });
 
 app.use(authRoutes);
-app.use(userRoutes);
+app.use(rangerRoutes);
 
 app.all('*', (req, res, next) => {
-    res.json({
-        message: 'Welcome to the Wild Rangers',
-    });
+    res.redirect('/dashboard');
 });
 
 //Error handlers & middlewares

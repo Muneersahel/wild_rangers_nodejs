@@ -5,15 +5,17 @@ const { config } = require('../config/variables.config');
 
 // get login page
 exports.getLogin = (req, res, next) => {
-    res.render("login");
+    res.render('login');
 };
 
 exports.loginAdmin = async (req, res) => {
     const { email, password } = req.body;
+    console.log(email, password);
     try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             const errorsArray = errors.array().map((error) => error.msg);
+            console.log(errorsArray);
             // render login page with errors with old email input
         }
 
@@ -22,15 +24,15 @@ exports.loginAdmin = async (req, res) => {
         });
 
         if (!user) {
-            // redirect login page with errors (Email or password is incorrect)
-            const message = "Email or password is incorrect";
-            res.render("login", { message: message });
+            const message = 'Email or password is incorrect';
+            console.log(message, ' - user not found');
+            return res.render('login', { message: message });
         }
         const isPasswordValid = await comparePassword(password, user.password);
         if (!isPasswordValid) {
-            // render login page with errors (Email or password is incorrect)
-            const message = "Email or password is incorrect";
-            res.render("login", { message: message });
+            const message = 'Email or password is incorrect';
+            console.log(message, ' - password');
+            return res.render('login', { message: message });
         }
 
         req.session.isAuthenticated = true;
@@ -40,10 +42,8 @@ exports.loginAdmin = async (req, res) => {
             isAdmin: user.isAdmin,
         };
 
-        console.log(req.session);
-
-        // redirect to dashboard
-        res.redirect("/dashboard");
+        console.log('Login Successfully!');
+        res.redirect('/dashboard');
     } catch (error) {
         console.log(error);
     }
@@ -54,8 +54,8 @@ exports.logoutAdmin = async (req, res) => {
         if (err && config.nodeEnv !== 'production') {
             console.log(err);
         }
-        // redirect to login page
-        const message = "Logout Successfully!";
-        res.render("login", { message: message });
+        const message = 'Logout Successfully!';
+        console.log(message);
+        res.redirect('login');
     });
 };

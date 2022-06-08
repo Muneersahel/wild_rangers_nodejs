@@ -5,7 +5,6 @@ const authController = require('../controllers/auth.controller');
 
 const router = express.Router();
 
-
 router.get('/login', authController.getLogin);
 router.post(
     '/login',
@@ -21,5 +20,6 @@ router.post(
     ],
     authController.loginAdmin
 );
+router.post('/logout', authController.logoutAdmin);
 
 module.exports = router;
