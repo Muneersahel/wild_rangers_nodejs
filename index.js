@@ -51,7 +51,7 @@ app.use(authRoutes);
 app.use(rangerRoutes);
 
 app.all('*', (req, res, next) => {
-    res.redirect('/dashboard');
+    res.redirect('/rangers');
 });
 
 //Error handlers & middlewares

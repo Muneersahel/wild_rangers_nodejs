@@ -43,7 +43,7 @@ exports.loginAdmin = async (req, res) => {
         };
 
         console.log('Login Successfully!');
-        res.redirect('/dashboard');
+        res.redirect('/rangers');
     } catch (error) {
         console.log(error);
     }

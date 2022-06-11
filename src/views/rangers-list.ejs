@@ -27,15 +27,15 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Ranger Admin</a>
+                        <a href="/dashboard">Ranger Admin</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-title">Navigation</li>
                     <li>
-                        <a href="/dashboard"
+                        <!-- <a href="/dashboard"
                             ><span class="fa fa-desktop"></span>
                             <span class="xn-text">Dashboard</span></a
-                        >
+                        > -->
                         <a href="/rangers"
                             ><span class="fa fa-list"></span>
                             <span class="xn-text">Rangers List</span></a
@@ -97,21 +97,42 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
+                                                <th>Ranger ID</th>
+                                                <th>Latitude</th>
+                                                <th>Longitude</th>
+                                                <th>Temperature</th>
+                                                <th>Heart Rate</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <% rangers.forEach((ranger) => { %>
                                             <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
+                                                <td>
+                                                    <%= ranger.vars.Rangers_id ?
+                                                    ranger.vars.Rangers_id :
+                                                    '-NIL-' %>
+                                                </td>
+                                                <td>
+                                                    <%= ranger.vars.Latitude ?
+                                                    ranger.vars.Latitude :
+                                                    '-NIL-' %>
+                                                </td>
+                                                <td>
+                                                    <%= ranger.vars.Longitude ?
+                                                    ranger.vars.Longitude:
+                                                    '-NIL-' %>
+                                                </td>
+                                                <td>
+                                                    <%= ranger.vars.temperature
+                                                    ? ranger.vars.temperature :
+                                                    '-NIL-' %>
+                                                </td>
+                                                <td>
+                                                    <%= ranger.vars.heart_rate ?
+                                                    ranger.vars.heart_rate:
+                                                    '-NIL-' %>
+                                                </td>
                                                 <td>
                                                     <a
                                                         href="/ranger"
@@ -121,68 +142,7 @@
                                                     ></a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td>
-                                                <td>
-                                                    <a
-                                                        href="/ranger"
-                                                        class="btn btn-info"
-                                                        >View
-                                                        <i class="fa fa-eye"></i
-                                                    ></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td>
-                                                <td>
-                                                    <a
-                                                        href="/ranger"
-                                                        class="btn btn-info"
-                                                        >View
-                                                        <i class="fa fa-eye"></i
-                                                    ></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cedric Kelly</td>
-                                                <td>
-                                                    Senior Javascript Developer
-                                                </td>
-                                                <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2012/03/29</td>
-                                                <td>
-                                                    <a
-                                                        href="/ranger"
-                                                        class="btn btn-info"
-                                                        >View
-                                                        <i class="fa fa-eye"></i
-                                                    ></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Airi Satou</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>33</td>
-                                                <td>2008/11/28</td>
-                                                <td>
-                                                    <a
-                                                        href="/ranger"
-                                                        class="btn btn-info"
-                                                        >View
-                                                        <i class="fa fa-eye"></i
-                                                    ></a>
-                                                </td>
-                                            </tr>
+                                            <% }) %>
                                         </tbody>
                                     </table>
                                 </div>
