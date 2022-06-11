@@ -5,17 +5,16 @@ const { config } = require('../config/variables.config');
 
 // get login page
 exports.getLogin = (req, res, next) => {
-    res.render('login');
+    res.render('login', { message: '' });
 };
 
 exports.loginAdmin = async (req, res) => {
     const { email, password } = req.body;
-    console.log(email, password);
     try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             const errorsArray = errors.array().map((error) => error.msg);
-            console.log(errorsArray);
+            // console.log(errorsArray);
             // render login page with errors with old email input
         }
 
@@ -25,13 +24,11 @@ exports.loginAdmin = async (req, res) => {
 
         if (!user) {
             const message = 'Email or password is incorrect';
-            console.log(message, ' - user not found');
             return res.render('login', { message: message });
         }
         const isPasswordValid = await comparePassword(password, user.password);
         if (!isPasswordValid) {
             const message = 'Email or password is incorrect';
-            console.log(message, ' - password');
             return res.render('login', { message: message });
         }
 
@@ -42,7 +39,6 @@ exports.loginAdmin = async (req, res) => {
             isAdmin: user.isAdmin,
         };
 
-        console.log('Login Successfully!');
         res.redirect('/rangers');
     } catch (error) {
         console.log(error);

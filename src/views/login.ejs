@@ -25,6 +25,9 @@
                     <div class="login-title">
                         <strong>Welcome</strong>, Please login
                     </div>
+                    <% if (message) { %>
+                    <p class="text-danger"><%= message %></p>
+                    <% } %>
                     <form action="/login" class="form-horizontal" method="post">
                         <div class="form-group">
                             <div class="col-md-12">
@@ -48,9 +51,9 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6">
-                                <a href="#" class="btn btn-link btn-block"
+                                <!-- <a href="#" class="btn btn-link btn-block"
                                     >Forgot your password?</a
-                                >
+                                > -->
                             </div>
                             <div class="col-md-6">
                                 <button
