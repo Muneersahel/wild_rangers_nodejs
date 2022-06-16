@@ -23,7 +23,7 @@ exports.getRangers = async (req, res, next) => {
             rangers.push(row.data);
         } else {
             // res.send(rangers);
-            res.render('rangers-list', { rangers: rangers });
+            res.render('rangers-list', { rangers: rangers.reverse() });
         }
     });
 };

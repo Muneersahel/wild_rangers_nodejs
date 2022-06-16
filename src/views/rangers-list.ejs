@@ -97,7 +97,9 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Ranger ID</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Mobile Number</th>
                                                 <th>Latitude</th>
                                                 <th>Longitude</th>
                                                 <th>Temperature</th>
@@ -109,35 +111,32 @@
                                             <% rangers.forEach((ranger) => { %>
                                             <tr>
                                                 <td>
-                                                    <%= ranger.vars.Rangers_id ?
-                                                    ranger.vars.Rangers_id :
-                                                    '-NIL-' %>
+                                                    <%= ranger.vars.Rangers_id? ranger.vars.Rangers_id : '-NIL-' %>
                                                 </td>
                                                 <td>
-                                                    <%= ranger.vars.Latitude ?
-                                                    ranger.vars.Latitude :
-                                                    '-NIL-' %>
+                                                    <span class="text-capitalize"><%= ranger.vars.Rangers_Name? ranger.vars.Rangers_Name : '-NIL-' %></span>
+                                                </td>
+                                                <td class="text-capitalize">
+                                                    <%= ranger.from_number? ranger.from_number: '-NIL-' %> 
                                                 </td>
                                                 <td>
-                                                    <%= ranger.vars.Longitude ?
-                                                    ranger.vars.Longitude:
-                                                    '-NIL-' %>
+                                                    <%= ranger.vars.Latitude? ranger.vars.Latitude: '-NIL-' %>
                                                 </td>
                                                 <td>
-                                                    <%= ranger.vars.temperature
-                                                    ? ranger.vars.temperature :
-                                                    '-NIL-' %>
+                                                    <%= ranger.vars.Longitude? ranger.vars.Longitude: '-NIL-' %>
                                                 </td>
                                                 <td>
-                                                    <%= ranger.vars.heart_rate ?
-                                                    ranger.vars.heart_rate:
-                                                    '-NIL-' %>
+                                                    <%= ranger.vars.temperature? ranger.vars.temperature: '-NIL-' %>
+                                                </td>
+                                                <td>
+                                                    <%= ranger.vars.heart_rate? ranger.vars.heart_rate: '-NIL-' %>
                                                 </td>
                                                 <td>
                                                     <a
                                                         href="/ranger"
                                                         class="btn btn-info"
-                                                        >View
+                                                    >
+                                                        View
                                                         <i class="fa fa-eye"></i
                                                     ></a>
                                                 </td>
