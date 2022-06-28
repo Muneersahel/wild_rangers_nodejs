@@ -104,7 +104,8 @@
                                                 <th>Longitude</th>
                                                 <th>Temperature</th>
                                                 <th>Heart Rate</th>
-                                                <th>Action</th>
+                                                <th>Danger Status</th>
+                                                <!-- <th>Action</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -132,6 +133,9 @@
                                                     <%= ranger.vars.heart_rate? ranger.vars.heart_rate: '-NIL-' %>
                                                 </td>
                                                 <td>
+                                                    <%= ranger.vars.Danger_Alerts? ranger.vars.Danger_Alerts: '-NIL-' %>
+                                                </td>
+                                                <!-- <td>
                                                     <a
                                                         href="/ranger"
                                                         class="btn btn-info"
@@ -139,7 +143,7 @@
                                                         View
                                                         <i class="fa fa-eye"></i
                                                     ></a>
-                                                </td>
+                                                </td> -->
                                             </tr>
                                             <% }) %>
                                         </tbody>
